@@ -38,6 +38,8 @@ jobs:
         tag_name: v${{ env.VERSION }}
         name: Release v${{ env.VERSION }}
         files: target/*.jar
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
         
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph
