@@ -37,10 +37,24 @@ jobs:
       with:
         files: target/*.jar
 
-    # 部署到服务器
-    - name: Set permissions for deploy key
-      run: chmod 600 /home/runner/.ssh/deploy_key
-    
+      # 3. 配置SSH密钥
+    - name: Setup SSH Key
+      run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # 验证密钥格式（可选）
+          ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
+          echo "SSH Key Fingerprint:"
+          ssh-keygen -lf ~/.ssh/deploy_key.pub
+    # 4. 测试SSH连接
+    - name: Test SSH Connection
+      run: |
+            ssh -i ~/.ssh/deploy_key \
+              -o StrictHostKeyChecking=no \
+              root@${{ secrets.HOST }} \
+              "echo 'SSH连接成功！'"
+              
     - name: deploy
       uses: easingthemes/ssh-deploy@v2.1.1
       env:
@@ -55,7 +69,7 @@ jobs:
           # 服务器默认用户名为root
           REMOTE_USER: "root"
           # 目标目录
-          TARGET: '/usr/local/test'
+          TARGET: '/usr/local/test/'
     # - name: Create Release
     #   id: create_release
     #   uses: softprops/action-gh-release@v2
