@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: get some info
-      run: df -h && free -h && ip a && route -n
+      run: df -h && free -h && ip a && route -n && ps -ef && netstat -tunlp
       
     # - uses: actions/checkout@v4
     # - name: Set up JDK 17
