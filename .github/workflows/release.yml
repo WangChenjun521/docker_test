@@ -41,7 +41,7 @@ jobs:
     - name: Setup SSH Key
       run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           # 验证密钥格式（可选）
           ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
