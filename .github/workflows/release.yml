@@ -47,13 +47,14 @@ jobs:
           ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
           echo "SSH Key Fingerprint:"
           ssh-keygen -lf ~/.ssh/deploy_key.pub
-    # 4. 测试SSH连接
-    - name: Test SSH Connection
-      run: |
-            ssh -i ~/.ssh/deploy_key \
-              -o StrictHostKeyChecking=no \
-              root@${{ secrets.HOST }} \
-              "echo 'SSH连接成功！'"
+          
+    # # 4. 测试SSH连接
+    # - name: Test SSH Connection
+    #   run: |
+    #         ssh -i ~/.ssh/deploy_key \
+    #           -o StrictHostKeyChecking=no \
+    #           root@${{ secrets.HOST }} \
+    #           "echo 'SSH连接成功！'"
               
     - name: deploy
       run: |
