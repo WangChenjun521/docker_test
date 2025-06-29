@@ -8,14 +8,12 @@
 
 name: Java CI with Maven
 
-permissions:
-  contents: write
-  
 on:
   push:
     tags:
       - 'v*'  # 打标签时触发 Release
-
+permissions:
+  contents: write
 
 jobs:
   release:
