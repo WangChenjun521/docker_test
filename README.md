@@ -19,6 +19,10 @@ docker pull ccr.ccs.tencentyun.com/library/nginx:latest
 
 
 
+## 如何创建最简单的spring boot 项目
+
+[如何在idea中创建一个SpringBoot项目（超详细教学）_idea创建springboot项目-CSDN博客](https://blog.csdn.net/weixin_51309915/article/details/123349773)
+
 
 
 
