@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 @SpringBootTest
@@ -20,7 +21,7 @@ class DemoApplicationTests {
     }
 
     @Test
-    void testIp() throws UnknownHostException {
+    void testIp() throws SocketException, UnknownHostException {
         testController.getIP();
     }
 
