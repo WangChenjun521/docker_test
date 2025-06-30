@@ -10,10 +10,9 @@ import java.util.Enumeration;
 @RestController
 @RequestMapping("/hello")
 public class TestController {
-    @RequestMapping("/helloworld")
+    @RequestMapping("hello")
     public String printHelloWorld() throws SocketException, UnknownHostException {
         return "Hello World";
-//        return getIP();
     }
 
     public String getIP() throws UnknownHostException, SocketException {
