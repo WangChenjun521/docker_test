@@ -12,8 +12,8 @@ import java.util.Enumeration;
 public class TestController {
     @RequestMapping("/helloworld")
     public String printHelloWorld() throws SocketException, UnknownHostException {
-//        return "Hello World";
-        return getIP();
+        return "Hello World";
+//        return getIP();
     }
 
     public String getIP() throws UnknownHostException, SocketException {
