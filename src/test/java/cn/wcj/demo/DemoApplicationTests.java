@@ -16,7 +16,7 @@ class DemoApplicationTests {
 
 
     @Test
-    void contextLoads() {
+    void contextLoads() throws SocketException, UnknownHostException {
         System.out.println(testController.printHelloWorld());
     }
 
