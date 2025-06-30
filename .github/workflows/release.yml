@@ -47,7 +47,13 @@ jobs:
           ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
           echo "SSH Key Fingerprint:"
           ssh-keygen -lf ~/.ssh/deploy_key.pub
-          
+
+    - name: remove app.jar
+      run: |
+            ssh -i ~/.ssh/deploy_key \
+              -o StrictHostKeyChecking=no \
+              root@${{ secrets.HOST }} \
+              "rm /usr/local/jar/app.jar && echo 'rm app.jar成功！'"
 
     - name: deploy
       run: |
@@ -57,7 +63,7 @@ jobs:
               root@${{ secrets.HOST }}:/usr/local/jar/
               
     # 4. 测试重启服务
-    - name: Test SSH Connection
+    - name: restart app.jar
       run: |
             ssh -i ~/.ssh/deploy_key \
               -o StrictHostKeyChecking=no \
